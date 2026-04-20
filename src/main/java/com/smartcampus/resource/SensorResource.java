@@ -24,7 +24,7 @@ import com.smartcampus.exception.LinkedResourceNotFoundException;
 import com.smartcampus.model.Room;
 import com.smartcampus.model.Sensor;
 
-@Path("/api/v1/sensors")
+@Path("/sensors")
 @Produces(MediaType.APPLICATION_JSON)
 public class SensorResource {
 

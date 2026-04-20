@@ -1,27 +1,30 @@
 package com.smartcampus;
 
-import org.glassfish.grizzly.http.server.HttpServer;
-import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.jersey.server.ResourceConfig;
-
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.jackson.JacksonFeature;
+import org.glassfish.jersey.server.ResourceConfig;
+
 public class Main {
 
-    public static final String BASE_URI = "http://localhost:8080/";
+    public static final String BASE_URI = "http://localhost:8080/api/v1/";
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     public static HttpServer startServer() {
-        final ResourceConfig config = new ResourceConfig().packages("com.smartcampus");
+        final ResourceConfig config = new ResourceConfig()
+                .packages("com.smartcampus")
+                .register(JacksonFeature.class);
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), config);
     }
 
     public static void main(String[] args) {
         final HttpServer server = startServer();
         LOGGER.log(Level.INFO, "Smart Campus API started at {0}", BASE_URI);
-        LOGGER.info("API base path: " + BASE_URI + "api/v1");
+        LOGGER.info("API base path: " + BASE_URI);
         LOGGER.info("Press Ctrl+C to stop the server...");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

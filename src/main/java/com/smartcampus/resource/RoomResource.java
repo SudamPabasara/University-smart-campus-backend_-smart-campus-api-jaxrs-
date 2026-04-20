@@ -18,7 +18,7 @@ import com.smartcampus.data.DataStore;
 import com.smartcampus.exception.RoomNotEmptyException;
 import com.smartcampus.model.Room;
 
-@Path("/api/v1/rooms")
+@Path("/rooms")
 @Produces(MediaType.APPLICATION_JSON)
 public class RoomResource {
 
