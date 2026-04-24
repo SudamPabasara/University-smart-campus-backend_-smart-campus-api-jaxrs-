@@ -5,11 +5,12 @@
 This project implements a RESTful API for the university's "Smart Campus" initiative. Built using **JAX-RS (Jersey)** with an embedded **Grizzly HTTP server**, it manages campus rooms and diverse sensors (e.g., CO2 monitors, occupancy trackers, smart lighting controllers) through a high-performance web service.
 
 **Technology Stack:**
-- **Framework:** JAX-RS (Jersey 2.39.1) — No Spring Boot
+- **Framework:** JAX-RS (Jersey 2.39.1) — **No Spring Boot allowed**
 - **Server:** Embedded Grizzly HTTP Server
-- **Data Storage:** In-memory data structures (`ConcurrentHashMap`, `ArrayList`) — No database
+- **Data Storage:** In-memory data structures (`ConcurrentHashMap`, `ArrayList`) — **No database technologies (SQL Server, etc.)**
 - **Build Tool:** Apache Maven
 - **Language:** Java 11+
+- **Packaging:** Executable JAR (via maven-shade-plugin)
 
 ---
 
@@ -149,6 +150,8 @@ The discovery endpoint at `GET /api/v1` in this project exemplifies this by prov
 ---
 
 ### Part 2: Room Management
+
+**Specification Compliance Note:** Part 2 requires a "RoomResource" class (not "SensorRoom") to manage the `/api/v1/rooms` path with GET, POST, and DELETE operations plus business logic constraints.
 
 **Question 2.1: When returning a list of rooms, what are the implications of returning only IDs versus returning the full room objects? Consider network bandwidth and client-side processing.**
 
