@@ -123,7 +123,7 @@ curl -X DELETE http://localhost:8080/api/v1/rooms/LIB-301
 
 ---
 
-## Conceptual Report
+## Report
 
 ### Part 1: Service Architecture & Setup
 
